@@ -1,213 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Atelier Minimal — Made to Order</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #0f0f0f;
-      --text-light: #555;
-      --accent: #000000;
-      --accent-hover: #222;
-      --border: #e5e5e5;
-      --radius: 16px;
-      --card-bg: white;
-    }
+<section class="products">
 
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-    .container { 
-      max-width: 1280px; 
-      margin: 0 auto; 
-      padding: 0 24px; 
-    }
-
-    header {
-      padding: 60px 0 100px;
-      text-align: center;
-      position: relative;
-    }
-    .logo {
-      font-size: 0;
-      margin-bottom: 16px;
-    }
-    .logo svg {
-      height: 52px;
-      width: auto;
-    }
-    .tagline {
-      font-size: 1.15rem;
-      color: var(--text-light);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 64px 56px;
-      padding: 20px 0 120px;
-    }
-
-    .product-card {
-      width: 380px;                /* fixed width for consistent centering */
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-    }
-    .product-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 28px 56px rgba(0,0,0,0.08);
-      border-color: #ccc;
-    }
-
-    .product-image-wrapper {
-      height: 460px;
-      background: #f9f9f9;
-      overflow: hidden;
-    }
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s ease;
-    }
-    .product-card:hover .product-image { transform: scale(1.05); }
-
-    .product-info {
-      padding: 28px 32px 36px;
-      text-align: center;
-    }
-    .product-name {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .product-teaser {
-      color: var(--text-light);
-      font-size: 1rem;
-      margin: 0 auto 24px;
-      max-width: 320px;
-    }
-    .price {
-      font-size: 1.45rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-    .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      background: white;
-      max-width: 520px;
-      width: 92%;
-      border-radius: var(--radius);
-      padding: 40px 32px;
-      position: relative;
-      text-align: left;
-    }
-    .close {
-      position: absolute;
-      top: 16px;
-      right: 24px;
-      font-size: 2.2rem;
-      cursor: pointer;
-      color: #777;
-    }
-    .modal h3 { margin-bottom: 24px; font-size: 1.5rem; text-align: center; }
-    form { display: flex; flex-direction: column; gap: 16px; }
-    input, textarea {
-      padding: 14px 16px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-    textarea { min-height: 120px; resize: vertical; }
-    button[type="submit"] {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 50px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-    button[type="submit"]:hover { background: var(--accent-hover); }
-
-    footer {
-      text-align: center;
-      padding: 80px 0 60px;
-      color: #666;
-      font-size: 0.95rem;
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 900px) {
-      .products { gap: 48px 32px; }
-      .product-image-wrapper { height: 420px; }
-    }
-
-    @media (max-width: 480px) {
-      .product-card { width: 100%; max-width: 380px; }
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-
-  <header>
-    <div class="logo">
-      <!-- Replace with your real logo file if available -->
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="100" height="100" rx="20" fill="currentColor" opacity="0.08"/>
-        <path d="M30 70 L50 30 L70 70 M40 50 L60 50" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
-      </svg>
+  <!-- Product 1 -->
+  <div class="product-card">
+    <div class="product-image-wrapper">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80" 
+           alt="Ribbed Ceramic Vessel" class="product-image">
     </div>
-    <p class="tagline">Handcrafted pieces made to order — slow, intentional, built to last.</p>
-  </header>
+    <div class="product-info">
+      <h2 class="product-name">Ribbed Ceramic Vessel</h2>
+      <p class="product-teaser">Hand-thrown stoneware with subtle textured glaze. Made individually on order.</p>
+      <div class="price">from $95</div>
+      <button class="btn" onclick="openModal('modal1')">Order Now</button>
+    </div>
+  </div>
 
-  <section class="products">
+  <!-- Product 2 -->
+  <div class="product-card">
+    <div class="product-image-wrapper">
+      <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&auto=format&fit=crop&q=80" 
+           alt="Walnut Serving Tray" class="product-image">
+    </div>
+    <div class="product-info">
+      <h2 class="product-name">Walnut Serving Tray</h2>
+      <p class="product-teaser">Solid walnut with hand-shaped edges. Each piece is unique and made to order.</p>
+      <div class="price">from $145</div>
+      <button class="btn" onclick="openModal('modal2')">Order Now</button>
+    </div>
+  </div>
 
-    <!-- Product 1 -->
-    <div class="product-card">
-      <div class="product-image-wrapper">
-        <img src="https://thumbs.dreamstime.com/b/scandinavian-minimalist-interior-still-life-featuring-white-fluted-ceramic-vase-dried-eucalyptus-branch-cream-ribbed-coffee-435352557.jpg" 
-             alt="Ribbed Ceramic Vessel
+</section>
