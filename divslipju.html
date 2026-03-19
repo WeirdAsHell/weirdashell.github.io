@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Minimal — Divslipu Ribbed Vessel</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f0f0f;
+      --text-light: #555;
+      --accent: #000000;
+      --accent-hover: #222;
+      --border: #e5e5e5;
+      --radius: 16px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      padding: 40px 0 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .back {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .logo img {
+      height: 52px;
+      width: auto;
+    }
+    .product-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      padding-bottom: 100px;
+    }
+    .main-image {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      background: #f9f9f9;
+    }
+    .thumbnails {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .thumbnail.active {
+      border-color: var(--accent);
+    }
+    .info h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+    .price {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .variant-group {
+      margin-bottom: 24px;
+    }
+    .variant-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-light);
+    }
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+    .description {
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 16px 48px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      width: 100%;
+    }
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      max-width: 520px;
+      width: 92%;
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-size: 2.2rem;
+      cursor: pointer;
+      color: #777;
+    }
+    .modal h3 {
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 80px 0 60px;
+      color: #666;
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 900px) {
+      .product-detail { grid-template-columns: 1fr; gap: 40px; }
+      .main-image { height: 420px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <a href="/" class="back">← Back to Shop</a>
+      <div class="logo">
+        <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png" alt="Atelier Minimal Logo">
+      </div>
+    </header>
+
+    <section class="product-detail">
+      <div>
+        <img id="mainImg" src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/Divslipu_Drawing.jpg"
+             alt="Divslipu Ribbed Vessel" class="main-image">
+
+        <div class="thumbnails">
+          <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/Divslipu_Drawing.jpg"
+               class="thumbnail active" onclick="setMain(this.src)">
+          <!-- Add more thumbnails here if you have additional photos -->
+        </div>
+      </div>
+
+      <div>
+        <h1>Divslipu Ribbed Vessel</h1>
+        <div id="priceDisplay" class="price">$95</div>
+
+        <div class="variant-group">
+          <label>Size</label>
+          <select id="sizeSelect" onchange="calcPrice()">
+            <option value="95">Small — 18 cm ($95)</option>
+            <option value="125">Medium — 24 cm ($125)</option>
+            <option value="155">Large — 32 cm ($155)</option>
+          </select>
+        </div>
+
+        <div class="variant-group">
+          <label>Glaze</label>
+          <select id="glazeSelect" onchange="calcPrice()">
+            <option value="0">Natural Off-White (+$0)</option>
+            <option value="15">Taupe (+$15)</option>
+            <option value="20">Charcoal (+$20)</option>
+            <option value="30">Custom (+$30)</option>
+          </select>
+        </div>
+
+        <p class="description">
+          Hand-thrown stoneware vessel with distinctive ribbed texture and Divslipu-inspired drawing motif. 
+          Made to order — unique piece every time.
+        </p>
+
+        <button class="btn" onclick="openOrderModal()">
+          Order — $<span id="btnPrice">95</span>
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Atelier Minimal — Crafted one at a time.</p>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h3>Order Divslipu Ribbed Vessel</h3>
+      <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <input type="hidden" name="product" value="Divslipu Ribbed Vessel">
+        <input type="hidden" name="selected_variant" id="hiddenVariant">
+        <textarea name="message" placeholder="Size, glaze preference, notes..." required></textarea>
+        <button type="submit">Send Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function setMain(src) {
+      document.getElementById('mainImg').src = src;
+      document.querySelectorAll('.thumbnail').forEach(el => el.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function calcPrice() {
+      const base = parseInt(document.getElementById('sizeSelect').value);
+      const extra = parseInt(document.getElementById('glazeSelect').value);
+      const total = base + extra;
+      document.getElementById('priceDisplay').textContent = '$' + total;
+      document.getElementById('btnPrice').textContent = total;
+    }
+
+    function openOrderModal() {
+      const size = document.getElementById('sizeSelect').selectedOptions[0].text;
+      const glaze = document.getElementById('glazeSelect').selectedOptions[0].text;
+      document.getElementById('hiddenVariant').value = size + ' / ' + glaze;
+      document.getElementById('orderModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('orderModal').style.display = 'none';
+    }
+
+    window.onclick = e => {
+      if (e.target.classList.contains('modal')) closeModal();
+    };
+
+    // Set initial price
+    calcPrice();
+  </script>
+</body>
+</html>
