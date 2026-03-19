@@ -35,7 +35,10 @@
     }
     header {
       padding: 60px 0 100px;
-      text-align: center;
+  text-align: center;
+  display: flex;              /* ← add this */
+  flex-direction: column;     /* stack logo + tagline vertically */
+  align-items: center;        /* center children horizontally */
     }
     .logo {
   font-size: 0;               /* keeps it as-is */
@@ -49,10 +52,12 @@
       width: auto;
     }
     .tagline {
-      font-size: 1.15rem;
-      color: var(--text-light);
-      max-width: 520px;
-      margin: 0 auto;
+      font-size:     1.15rem;
+  color:         var(--text-light);
+  max-width:     520px;           /* ← keep this – prevents it from becoming too wide on desktop */
+  margin:        16px auto;       /* auto left/right = centered block */
+  text-align:    center;          /* centers each line individually */
+  width:         fit-content;     /* ← important addition */
     }
     .products {
       display: flex;
