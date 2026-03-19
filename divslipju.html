@@ -32,7 +32,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .logo img { height: 52px; width: auto; }
+    .logo img { height: 100px; width: auto; }
     .back { color: var(--text-light); text-decoration: none; font-weight: 500; }
 
     .product-detail {
@@ -175,7 +175,7 @@
 <body>
   <div class="container">
     <header>
-      <a href="index.html" class="back">← Back to Shop</a>
+      <a href="index.html" class="back">← Atpakaļ</a>
       <div class="logo">
         <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png" alt="Atelier Minimal">
       </div>
@@ -197,7 +197,7 @@
 
       <!-- INFO -->
       <div class="info">
-        <h1>Divslipu Ribbed Vessel</h1>
+        <h1>Divslīpju Suņu Māja</h1>
         <div id="price" class="price">$95</div>
 
         <div class="variant-group">
@@ -215,7 +215,7 @@
           Each piece is individually made to order — no two are exactly alike. Built to last generations.
         </p>
 
-        <button class="btn" onclick="openModal()">Order This Version — $<span id="buttonPrice">95</span></button>
+        <button class="btn" onclick="openModal()">Veikt pasūtījumu — $<span id="buttonPrice">95</span></button>
       </div>
     </section>
 
@@ -228,14 +228,14 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">×</span>
-      <h3 id="modalTitle">Order Divslipu Ribbed Vessel</h3>
-      <form action="https://formspree.io/f/YOUR_REAL_ID_HERE" method="POST">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <input type="hidden" name="product" id="hiddenProduct" value="Divslipu Ribbed Vessel">
+      <h3 id="modalTitle">Pasūtīt divslīpju suņa māju</h3>
+      <form action="https://formspree.io/f/mnjgwnao" method="POST">
+        <input type="text" name="name" placeholder="Vārds" required>
+        <input type="email" name="email" placeholder="E-pasts" required>
+        <input type="hidden" name="product" id="hiddenProduct" value="Divslīpju suņu māja">
         <input type="hidden" name="variant" id="hiddenVariant" value="">
-        <textarea name="message" placeholder="Any additional notes or custom requests..." required></textarea>
-        <button type="submit">Send Order Request</button>
+        <textarea name="message" placeholder="Citi jautājumi vai piebildes" required></textarea>
+        <button type="submit">Nosūtīt pieteikumu</button>
       </form>
     </div>
   </div>
