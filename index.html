@@ -188,6 +188,18 @@
     @media (max-width: 480px) {
       .product-card { width: 100%; max-width: 380px; }
     }
+    
+    .product-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card-link:hover .product-card {
+  transform: translateY(-12px);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.08);
+  border-color: #ccc;
+}
   </style>
 </head>
 <body>
@@ -215,18 +227,22 @@
       </div>
 
       <!-- Product 2 -->
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/Divslipu_Drawing.jpg"
-               alt="Divslīpju suņu māja" class="product-image">
+      <a href="divslipju.html" class="product-card-link">
+  <div class="product-card">
+    <div class="product-image-wrapper">
+        <img src="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/Divslipu_Drawing.jpg?raw=true"
+               alt="Divslīpu suņu māja" class="product-image">
         </div>
-        <div class="product-info">
-          <h2 class="product-name">Divslīpju suņu māja</h2>
-          <p class="product-teaser">Solid walnut with hand-shaped edges. Each piece is unique and made to order.</p>
-          <div class="price">No 740€</div>
-          <button class="btn" onclick="openModal('modal2')">Pasūtīt</button>
-        </div>
-      </div>
+    <div class="product-info">
+      <h2 class="product-name">Vienslīpju suņu māja</h2>
+      <p class="product-teaser">Hand-thrown stoneware with subtle textured glaze. Made individually on order.
+      </p>
+      <div class="price">No 740€</div>
+      <!-- Remove or change button to text like "Skatīt detaļas" -->
+      <div class="btn" style="pointer-events: none;">Apskatīt</div>
+    </div>
+  </div>
+</a>
     </section>
 
     <footer>
