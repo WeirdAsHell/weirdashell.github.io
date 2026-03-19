@@ -6,8 +6,8 @@
   <title>Atelier Minimal — Made to Order</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png">
-  
+  <link href="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png" rel="stylesheet">
+ 
   <style>
     :root {
       --bg: #ffffff;
@@ -19,7 +19,6 @@
       --radius: 16px;
       --card-bg: white;
     }
-
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
@@ -28,12 +27,11 @@
       line-height: 1.6;
       min-height: 100vh;
     }
-    .container { 
-      max-width: 1280px; 
-      margin: 0 auto; 
-      padding: 0 24px; 
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
-
     header {
       padding: 60px 0 100px;
       text-align: center;
@@ -52,7 +50,6 @@
       max-width: 520px;
       margin: 0 auto;
     }
-
     .products {
       display: flex;
       flex-wrap: wrap;
@@ -60,7 +57,6 @@
       gap: 64px 56px;
       padding: 20px 0 120px;
     }
-
     .product-card {
       width: 380px;
       border-radius: var(--radius);
@@ -74,7 +70,6 @@
       box-shadow: 0 28px 56px rgba(0,0,0,0.08);
       border-color: #ccc;
     }
-
     .product-image-wrapper {
       height: 460px;
       background: #f9f9f9;
@@ -91,7 +86,6 @@
       left: 0;
     }
     .product-card:hover .product-image { transform: scale(1.05); }
-
     .product-info {
       padding: 28px 32px 36px;
       text-align: center;
@@ -112,7 +106,6 @@
       font-weight: 600;
       margin-bottom: 20px;
     }
-
     .btn {
       background: var(--accent);
       color: white;
@@ -125,7 +118,6 @@
       transition: all 0.25s ease;
     }
     .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
-
     /* Modal */
     .modal {
       display: none;
@@ -173,7 +165,6 @@
       cursor: pointer;
     }
     button[type="submit"]:hover { background: var(--accent-hover); }
-
     footer {
       text-align: center;
       padding: 80px 0 60px;
@@ -181,101 +172,106 @@
       font-size: 0.95rem;
       border-top: 1px solid var(--border);
     }
-
     @media (max-width: 900px) {
       .products { gap: 48px 32px; }
       .product-image-wrapper { height: 420px; }
     }
-
     @media (max-width: 480px) {
       .product-card { width: 100%; max-width: 380px; }
     }
   </style>
 </head>
 <body>
-
-<div class="container">
-
-  <header>
-    <div class="logo">
-      <!-- Simple geometric "AM" monogram SVG - replace with your logo -->
-      <svg viewBox="0 0 100 100" fill="none" xmlns="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png?raw=true">
-        <rect width="100" height="100" rx="20" fill="currentColor" opacity="0.08"/>
-        <path d="M30 70 L50 30 L70 70 M40 50 L60 50" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <p class="tagline">Handcrafted pieces made to order — slow, intentional, built to last.</p>
-  </header>
-
-  <section class="products">
-
-    <!-- Product 1 -->
-    <div class="product-card">
-      <div class="product-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80" 
-             alt="Ribbed Ceramic Vessel" class="product-image">
+  <div class="container">
+    <header>
+      <div class="logo">
+        <!-- Simple geometric "AM" monogram SVG - replace with your logo -->
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="100" rx="20" fill="currentColor" opacity="0.08"/>
+          <path d="M30 70 L50 30 L70 70 M40 50 L60 50" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+        </svg>
       </div>
-      <div class="product-info">
-        <h2 class="product-name">Ribbed Ceramic Vessel</h2>
-        <p class="product-teaser">Hand-thrown stoneware with subtle textured glaze. Made individually on order.</p>
-        <div class="price">from $95</div>
-        <button class="btn" onclick="openModal('modal1')">Order Now</button>
+      <p class="tagline">Handcrafted pieces made to order — slow, intentional, built to last.</p>
+    </header>
+
+    <section class="products">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80"
+               alt="Ribbed Ceramic Vessel" class="product-image">
+        </div>
+        <div class="product-info">
+          <h2 class="product-name">Ribbed Ceramic Vessel</h2>
+          <p class="product-teaser">Hand-thrown stoneware with subtle textured glaze. Made individually on order.</p>
+          <div class="price">from $95</div>
+          <button class="btn" onclick="openModal('modal1')">Order Now</button>
+        </div>
       </div>
-    </div>
 
-    <!-- Product 2 -->
-    <div class="product-card">
-      <div class="product-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&auto=format&fit=crop&q=80" 
-             alt="Walnut Serving Tray" class="product-image">
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&auto=format&fit=crop&q=80"
+               alt="Walnut Serving Tray" class="product-image">
+        </div>
+        <div class="product-info">
+          <h2 class="product-name">Walnut Serving Tray</h2>
+          <p class="product-teaser">Solid walnut with hand-shaped edges. Each piece is unique and made to order.</p>
+          <div class="price">from $145</div>
+          <button class="btn" onclick="openModal('modal2')">Order Now</button>
+        </div>
       </div>
-      <div class="product-info">
-        <h2 class="product-name">Walnut Serving Tray</h2>
-        <p class="product-teaser">Solid walnut with hand-shaped edges. Each piece is unique and made to order.</p>
-        <div class="price">from $145</div>
-        <button class="btn" onclick="openModal('modal2')">Order Now</button>
-      </div>
-    </div>
+    </section>
 
-  </section>
-
-  <footer>
-    <p>© 2026 Atelier Minimal — Crafted one at a time.</p>
-  </footer>
-
-</div>
-
-<!-- Modals with forms -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal1')">×</span>
-    <h3>Order Ribbed Ceramic Vessel</h3>
-    <form action="https://formspree.io/f/your-form-id-here" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <input type="hidden" name="product" value="Ribbed Ceramic Vessel">
-      <textarea name="message" placeholder="Preferred size (small/medium/large), glaze color (natural off-white, taupe, charcoal, other), and any notes..." required></textarea>
-      <button type="submit">Send Order Request</button>
-    </form>
+    <footer>
+      <p>© 2026 Atelier Minimal — Crafted one at a time.</p>
+    </footer>
   </div>
-</div>
 
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal2')">×</span>
-    <h3>Order Walnut Serving Tray</h3>
-    <form action="https://formspree.io/f/your-form-id-here" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <input type="hidden" name="product" value="Walnut Serving Tray">
-      <textarea name="message" placeholder="Desired dimensions (e.g. 40×30 cm), finish (matte/oiled), personalization, and other details..." required></textarea>
-      <button type="submit">Send Order Request</button>
-    </form>
+  <!-- Modals with forms -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">×</span>
+      <h3>Order Ribbed Ceramic Vessel</h3>
+      <form action="https://formspree.io/f/your-form-id-here" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <input type="hidden" name="product" value="Ribbed Ceramic Vessel">
+        <textarea name="message" placeholder="Preferred size (small/medium/large), glaze color (natural off-white, taupe, charcoal, other), and any notes..." required></textarea>
+        <button type="submit">Send Order Request</button>
+      </form>
+    </div>
   </div>
-</div>
 
-<script>
-  function openModal(id) { document.getElementById(id).style.display = "flex"; }
-  function closeModal(id) { document.getElementById(id).style.display = "none"; }
-  window.onclick = function(e) {
-    if (e.target.classList.contains
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">×</span>
+      <h3>Order Walnut Serving Tray</h3>
+      <form action="https://formspree.io/f/your-form-id-here" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <input type="hidden" name="product" value="Walnut Serving Tray">
+        <textarea name="message" placeholder="Desired dimensions (e.g. 40×30 cm), finish (matte/oiled), personalization, and other details..." required></textarea>
+        <button type="submit">Send Order Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target.classList.contains('modal')) {
+        closeModal(e.target.id);
+      }
+    }
+  </script>
+</body>
+</html>
