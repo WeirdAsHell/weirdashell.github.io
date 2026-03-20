@@ -186,8 +186,8 @@
     <section class="product-detail">
       <!-- GALLERY -->
       <div class="gallery">
-        <img id="mainImage" src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/Divslipu_Drawing.jpg" 
-             alt="Divslipu Ribbed Vessel" class="main-image">
+        <img id="mainImage" src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/Vienslipu_Drawing.jpg" 
+             alt="Vienslīpju suņu māja" class="main-image">
 
         <div class="thumbnails">
           <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/Vienslipu_Drawing.jpg" class="thumbnail active" onclick="changeImage(this)">
@@ -234,7 +234,7 @@
       <form action="https://formspree.io/f/mnjgwnao" method="POST">
         <input type="text" name="name" placeholder="Vārds" required>
         <input type="email" name="email" placeholder="E-pasts" required>
-        <input type="hidden" name="product" id="hiddenProduct" value="Divslīpju suņu māja">
+        <input type="hidden" name="product" id="hiddenProduct" value="Vienslīpju suņu māja">
         <input type="hidden" name="variant" id="hiddenVariant" value="">
         <textarea name="message" placeholder="Citi jautājumi vai piebildes" ></textarea>
         <button type="submit">Nosūtīt pieteikumu</button>
@@ -265,7 +265,7 @@
       const total = document.getElementById('price').textContent;
 
       document.getElementById('hiddenVariant').value = `€{sizeText} • €{total}`;
-      document.getElementById('modalTitle').textContent = `Order Divslipu Ribbed Vessel — €{total}`;
+      document.getElementById('modalTitle').textContent = `Pasūtīt vienslīpju suņu māju — €{total}`;
 
       document.getElementById('modal').style.display = "flex";
     }
