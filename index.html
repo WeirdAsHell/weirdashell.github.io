@@ -200,6 +200,49 @@
   box-shadow: 0 28px 56px rgba(0,0,0,0.08);
   border-color: #ccc;
 }
+
+/* Supplier grid section */
+.supplier-grid {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.supplier-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: var(--radius);
+  transition: transform 0.2s ease;
+}
+
+.supplier-card:hover {
+  transform: translateY(-2px);
+}
+
+.supplier-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.supplier-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-light);
+}
+
+.supplier-card strong {
+  color: var(--text);
+  display: block;
+  font-size: 0.9rem;
+}
   </style>
 </head>
 <body>
@@ -244,6 +287,28 @@
     </div>
   </div>
 </a>
+
+<!-- brang logos -->
+
+<div class="supplier-grid">
+  <div class="supplier-card">
+    <img src="https://painteco.com/cdn/shop/files/Iecavnieks_Logo_Krasains_RGB.png?v=1736516167&width=150" alt="Ecological Paints">
+    <p><strong>Ecological Paints</strong>Only non-toxic, eco-friendly pigments</p>
+  </div>
+  
+  <div class="supplier-grid">
+  <div class="supplier-card">
+    <img src="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/wood_logo.jpg?raw=true" alt="Ecological Paints">
+    <p><strong>Dabīgs materiāls</strong>Tikai no Latvijā ražotiem kokmateriāliem</p>
+  </div>
+  
+  <div class="supplier-grid">
+  <div class="supplier-card">
+    <img src="https://kepauzsirds.lv/wp-content/uploads/KUS_logo_colored_2025-1536x1379.png" alt="Ecological Paints">
+    <p><strong>Ziedojums Ķepa uz sirds</strong>10€ no katras suņu mājas</p>
+  </div>
+  <!-- Add more supplier cards -->
+</div>
     </section>
 
     <footer>
