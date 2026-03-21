@@ -288,8 +288,8 @@
       const sizeText = document.getElementById('size').options[document.getElementById('size').selectedIndex].text;
       const total = document.getElementById('price').textContent;
 
-      document.getElementById('hiddenVariant').value = `€{sizeText} • €{total}`;
-      document.getElementById('modalTitle').textContent = `Order Divslipu Ribbed Vessel — €{total}`;
+      document.getElementById('hiddenVariant').value = `${sizeText} • ${total}`;
+      document.getElementById('modalTitle').textContent = `Order Divslipu Ribbed Vessel — ${total}`;
 
       document.getElementById('modal').style.display = "flex";
     }
