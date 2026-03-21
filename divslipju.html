@@ -211,7 +211,7 @@
       <!-- INFO -->
       <div class="info">
         <h1>Divslīpju Suņu Māja</h1>
-        <div id="price" class="price">$750</div>
+        <div id="price" class="price">€750</div>
 
         <div class="variant-group">
           <label>Variants</label>
@@ -224,13 +224,26 @@
         </div>
 
         <p class="description">
-          Hand-thrown stoneware with signature ribbed texture and the unique Divslipu drawing motif. 
-          Each piece is individually made to order — no two are exactly alike. Built to last generations.
-        </p>
+            
 
-        <button class="btn" onclick="openModal()">Veikt pasūtījumu — $<span id="buttonPrice">95</span></button>
+
+        <button class="btn" onclick="openModal()">Veikt pasūtījumu — €<span id="buttonPrice">95</span></button>
       </div>
     </section>
+    
+    <strong>Vietējie kokmateriāli</strong>
+      <p>Ražota no Latvijā augušiem kokiem → mazāks CO₂ pēdas nospiedums, atbalsti vietējos mežsaimniekus un kokapstrādes uzņēmumus, nevis ķīniešu masveida ražojumus.</p>
+
+<strong>Dabīga lineļļas krāsa</strong>
+      <p>Nekaitīga, bez VOC (gaistošo organisko savienojumu), neizdala indīgas smakas, droša suņiem pat ja tie grauž vai laiza virsmu. Laika gaitā tā skaisti noveco (patina), nevis lobās kā lētas ķīmiskās krāsas.</p>
+      
+      <strong>Organiskais stikls priekšā</strong>
+      <p>Tas ļauj sunim redzēt ārā kā pa logu un vienlaikus aizsargā no vēja, lietus un sniega. Suns jūtas drošāk un mazāk vientuļš.</p>
+<strong>Ilgmūžība un kvalitāte</strong>
+      <p>Pareizi apstrādāts koks + linēļļa + kvalitatīva montāža nozīmē, ka šī māja var kalpot 10–15+ gadus bez lielām problēmām, kamēr lētas būdas bieži sapūst vai deformējas 2–4 gadu laikā.</p>
+<strong>Estētika un dārza vērtība</strong>
+      <p>Tā neizskatās kā “suņu būda”, bet kā dizaina elements. Daudziem īpašniekiem ir svarīgi, lai arī suņa māja saskanētu ar mājas un dārza stilu – šī izskatās skaisti pat tad, kad suns tajā nav.</p>
+        </p>
 
     <footer>
       <p>© 2026 Atelier Minimal — Crafted one at a time.</p>
@@ -266,7 +279,7 @@
       const sizePrice = parseInt(document.getElementById('size').value);
       const total = sizePrice; // No more glaze add-on
 
-      document.getElementById('price').textContent = '$' + total;
+      document.getElementById('price').textContent = '€' + total;
       document.getElementById('buttonPrice').textContent = total;
     }
 
@@ -275,8 +288,8 @@
       const sizeText = document.getElementById('size').options[document.getElementById('size').selectedIndex].text;
       const total = document.getElementById('price').textContent;
 
-      document.getElementById('hiddenVariant').value = `${sizeText} • ${total}`;
-      document.getElementById('modalTitle').textContent = `Order Divslipu Ribbed Vessel — ${total}`;
+      document.getElementById('hiddenVariant').value = `€{sizeText} • €{total}`;
+      document.getElementById('modalTitle').textContent = `Order Divslipu Ribbed Vessel — €{total}`;
 
       document.getElementById('modal').style.display = "flex";
     }
