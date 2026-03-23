@@ -268,6 +268,19 @@
   font-size: 0.9rem;
   margin-bottom: 2px;
 }
+
+      footer {
+  text-align: center;
+  padding: 80px 0 100px;  /* more bottom space */
+  color: #666;
+  font-size: 0.95rem;
+  border-top: 1px solid var(--border);
+}
+
+footer .btn {
+  margin-top: 24px;          /* space above button */
+  padding: 16px 48px;        /* slightly wider */
+}
   </style>
 </head>
 <body>
@@ -351,9 +364,11 @@
 </div>
     </section>
 
-    <footer>
-      <p>© 2026 Atelier Minimal — Crafted one at a time.</p>
-    </footer>
+   <footer>
+      <button class="btn" onclick="openModal('contactModal')">Sazināties</button>
+  <p>© 2026 Atelier Minimal — Crafted one at a time.</p>
+  
+</footer>
   </div>
 
   <!-- Modals with forms -->
@@ -443,6 +458,20 @@
 }
 </script>
 
+    <!-- Contact Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('contactModal')">×</span>
+    <h3>Sazināties ar Garāžas Studiju</h3>
+    <form action="https://formspree.io/f/your-form-id-here" method="POST">
+      <input type="text" name="name" placeholder="Jūsu vārds" required>
+      <input type="email" name="email" placeholder="E-pasts" required>
+      <textarea name="message" placeholder="Jūsu jautājumi vai ieteikumi" required></textarea>
+      <input type="hidden" name="subject" value="General Contact Inquiry">
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</div>
     
 </body>
 </html>
