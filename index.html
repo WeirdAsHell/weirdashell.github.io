@@ -138,17 +138,24 @@
       margin-bottom: 20px;
     }
     .btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-    .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 16px 32px;           /* slightly reduced */
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;          /* prevents text wrapping */
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
     /* Modal */
     .modal {
       display: none;
