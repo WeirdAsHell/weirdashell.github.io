@@ -481,7 +481,7 @@ footer .btn {
 }
 </script>
 
-    <!-- Contact Modal -->
+<!-- Contact Modal -->
 <div id="contactModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('contactModal')">×</span>
@@ -490,8 +490,11 @@ footer .btn {
       <input type="text" name="name" placeholder="Jūsu vārds" required>
       <input type="email" name="email" placeholder="E-pasts" required>
       <textarea name="message" placeholder="Jūsu jautājumi vai ieteikumi" required></textarea>
-        <input type="hidden" name="_next" value="https://weirdashell.github.io/paldies.html">
-      <input type="hidden" name="subject" value="General Contact Inquiry">
+      
+      <!-- Make sure this is correct -->
+      <input type="hidden" name="_next" value="https://weirdashell.github.io/paldies.html">
+      <input type="hidden" name="_subject" value="Jauns ziņojums no Garāžas Studijas">
+      
       <button type="submit">Nosūtīt</button>
     </form>
   </div>
