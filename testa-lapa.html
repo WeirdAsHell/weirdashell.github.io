@@ -302,12 +302,12 @@ footer .btn {
 .hidden {
     display: none !important;
 }
-/* ===================== HERO VIDEO ===================== */
+/* ==================== HERO VIDEO ==================== */
 .hero-video {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 650px;
+  min-height: 700px;
   overflow: hidden;
   background: #000;
 }
@@ -316,14 +316,15 @@ footer .btn {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 177.78vh;        /* Removes black bars */
-  height: 100vh;
-  min-width: 100vw;
+  width: 100vw;
+  height: 56.25vw;           /* Strong 16:9 forced */
+  min-height: 100vh;
+  min-width: 177.78vh;
   transform: translate(-50%, -50%);
   border: none;
 }
 
-/* Overlay + Blurred Box */
+/* Overlay */
 .video-overlay {
   position: absolute;
   inset: 0;
@@ -331,62 +332,58 @@ footer .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.35);
 }
 
+/* Blurred Box */
 .blur-box {
-  background: rgba(255, 255, 255, 0.52);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: 55px 75px;
-  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.50);
+  backdrop-filter: blur(26px);
+  padding: 50px 80px;
+  border-radius: 30px;
   text-align: center;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-  max-width: 88%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  max-width: 92%;
 }
 
-/* Bigger Logo */
+/* BIGGER LOGO */
 .hero-logo {
-  height: 185px;          /* Big on desktop */
+  height: 220px;        /* ← Much bigger */
   width: auto;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 .slogan {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   color: #111;
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-/* ===================== MOBILE ===================== */
+/* ==================== MOBILE ==================== */
 @media (max-width: 768px) {
-  .hero-video {
-    min-height: 580px;
-  }
-  
   .hero-video iframe {
-    width: 100vw;
-    height: 177.78vw;
+    width: 177.78vh;
+    height: 100vh;
   }
   
   .hero-logo {
-    height: 135px;        /* Still big on phone */
+    height: 160px;      /* Big on phone too */
   }
   
   .slogan {
-    font-size: 1.18rem;
+    font-size: 1.2rem;
   }
   
   .blur-box {
     padding: 40px 40px;
-    margin: 0 20px;
+    margin: 0 15px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-logo {
-    height: 110px;
+    height: 130px;
   }
   .blur-box {
     padding: 35px 30px;
@@ -395,11 +392,10 @@ footer .btn {
   </style>
 </head>
 <body>
-<!-- HERO VIDEO SECTION -->
+<!-- HERO VIDEO -->
 <section class="hero-video">
   <iframe 
     src="https://www.youtube-nocookie.com/embed/437o-XdSAZw?autoplay=1&mute=1&loop=1&playlist=437o-XdSAZw&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
-    title="Background Video" 
     frameborder="0" 
     allow="autoplay; encrypted-media" 
     allowfullscreen>
@@ -410,7 +406,7 @@ footer .btn {
       <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png" 
            alt="Garāžas Studija Logo" 
            class="hero-logo">
-      <p class="slogan">Rūpīgi. Apzināti. Paliekoši.</p>
+      <p class="slogan">Handcrafted pieces made to order — slow, intentional, built to last.</p>
     </div>
   </div>
 </section>
