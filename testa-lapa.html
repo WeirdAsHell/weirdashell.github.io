@@ -309,60 +309,92 @@ footer .btn {
   height: 100vh;
   min-height: 650px;
   overflow: hidden;
+  background: #000;
 }
 
 .hero-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  border: none;
+  object-fit: cover;           /* This helps remove black bars */
+}
+
+/* Blurred Box */
+.video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border: none;
-}
-
-.video-overlay {
-  position: absolute;
   z-index: 2;
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .blur-box {
-  background: rgba(255, 255, 255, 0.10);   /* ← Reduced from 0.82 to 0.55 */
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  padding: 55px 70px;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 50px 60px;
   border-radius: 28px;
   text-align: center;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-  max-width: 85%;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+  max-width: 90%;
 }
 
+/* Bigger Logo */
 .hero-logo {
-  height: 110px;
+  height: 140px;           /* ← Increased size */
   width: auto;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .slogan {
-  font-size: 1.25rem;
-  color: #0f0f0f;
+  font-size: 1.35rem;
+  color: #111;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .hero-video {
+    height: 100vh;
+    min-height: 580px;
+  }
+  
+  .hero-logo {
+    height: 110px;         /* Still big on mobile */
+  }
+  
+  .slogan {
+    font-size: 1.1rem;
+  }
+  
+  .blur-box {
+    padding: 40px 35px;
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo {
+    height: 95px;
+  }
 }
   </style>
 </head>
 <body>
- <!-- Hero Video Section -->
-<!-- Hero Video Section - YouTube -->
+<!-- Hero Video Section -->
 <section class="hero-video">
   <iframe 
-    src="https://www.youtube.com/embed/437o-XdSAZw?autoplay=1&mute=1&loop=1&playlist=437o-XdSAZw&controls=0&showinfo=0&rel=0&modestbranding=1"
+    src="https://www.youtube-nocookie.com/embed/437o-XdSAZw?autoplay=1&mute=1&loop=1&playlist=437o-XdSAZw&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
     title="Background Video" 
     frameborder="0" 
     allow="autoplay; encrypted-media" 
@@ -374,7 +406,7 @@ footer .btn {
     <div class="blur-box">
       <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png" 
            alt="Garāžas Studija Logo" class="hero-logo">
-      <p class="slogan"><h3>Rūpīgi. Apzināti. Paliekoši.</h3></p>
+      <p class="slogan">Handcrafted pieces made to order — slow, intentional, built to last.</p>
     </div>
   </div>
 </section>
