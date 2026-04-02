@@ -307,7 +307,7 @@ footer .btn {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 700px;
+  min-height: 680px;
   overflow: hidden;
   background: #000;
 }
@@ -317,9 +317,9 @@ footer .btn {
   top: 50%;
   left: 50%;
   width: 100vw;
-  height: 56.25vw;           /* Strong 16:9 forced */
+  height: 56.25vw;
+  min-width: 100vw;
   min-height: 100vh;
-  min-width: 177.78vh;
   transform: translate(-50%, -50%);
   border: none;
 }
@@ -335,40 +335,43 @@ footer .btn {
   background: rgba(0, 0, 0, 0.35);
 }
 
-/* Blurred Box */
+/* Narrower Blurred Box */
 .blur-box {
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(26px);
-  padding: 50px 80px;
-  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.10);   /* Very transparent as you wanted */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 45px 60px;
+  border-radius: 28px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-  max-width: 92%;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+  max-width: 520px;           /* ← Narrower box */
+  width: 90%;
 }
 
-/* BIGGER LOGO */
+/* Logo & Slogan */
 .hero-logo {
-  height: 500px;        /* ← Much bigger */
+  height: 280px;              /* Big but balanced */
   width: auto;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .slogan {
   font-size: 1.45rem;
-  color: #111;
+  color: #ffffff;
   margin: 0;
-  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 /* ==================== MOBILE ==================== */
 @media (max-width: 768px) {
   .hero-video iframe {
-    width: 177.78vh;
     height: 100vh;
+    width: 177.78vh;
   }
   
   .hero-logo {
-    height: 160px;      /* Big on phone too */
+    height: 190px;
   }
   
   .slogan {
@@ -376,17 +379,17 @@ footer .btn {
   }
   
   .blur-box {
-    padding: 40px 40px;
-    margin: 0 15px;
+    padding: 35px 40px;
+    max-width: 460px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-logo {
-    height: 130px;
+    height: 160px;
   }
   .blur-box {
-    padding: 35px 30px;
+    padding: 30px 30px;
   }
 }
   </style>
