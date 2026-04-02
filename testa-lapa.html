@@ -316,7 +316,7 @@ footer .btn {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100vw;
+  width: 177.78vh;
   height: 100vh;
   transform: translate(-50%, -50%);
   border: none;
@@ -350,7 +350,7 @@ footer .btn {
 
 /* Bigger Logo */
 .hero-logo {
-  height: 140px;           /* ← Increased size */
+  height: 180px;           /* ← Increased size */
   width: auto;
   margin-bottom: 24px;
 }
@@ -370,15 +370,15 @@ footer .btn {
   }
   
   .hero-logo {
-    height: 110px;         /* Still big on mobile */
+    height: 130px;         /* Still big on mobile */
   }
   
   .slogan {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
   
   .blur-box {
-    padding: 40px 35px;
+    padding: 40px 40px;
     margin: 0 20px;
   }
 }
@@ -386,6 +386,10 @@ footer .btn {
 @media (max-width: 480px) {
   .hero-logo {
     height: 95px;
+  }
+    .hero-video iframe {
+    width: 100vw;
+    height: 177.78vw;     /* Better mobile scaling */
   }
 }
   </style>
@@ -401,12 +405,11 @@ footer .btn {
     allowfullscreen>
   </iframe>
 
-  <!-- Blurred overlay -->
   <div class="video-overlay">
     <div class="blur-box">
       <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png" 
            alt="Garāžas Studija Logo" class="hero-logo">
-      <p class="slogan">Handcrafted pieces made to order — slow, intentional, built to last.</p>
+      <p class="slogan">Rūpīgi. Apzināti. Paliekoši.</p>
     </div>
   </div>
 </section>
