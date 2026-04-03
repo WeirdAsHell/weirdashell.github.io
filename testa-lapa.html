@@ -302,25 +302,35 @@ footer .btn {
 .hidden {
     display: none !important;
 }
-/* ==================== HERO VIDEO ==================== */
+/* ==================== NARROW HERO VIDEO ==================== */
 .hero-video {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 680px;
+  min-height: 700px;
   overflow: hidden;
   background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 85%;                 /* ← Controls how narrow the video is */
+  max-width: 1100px;          /* Maximum width */
+  aspect-ratio: 16 / 9;       /* Forces 16:9 ratio */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
 .hero-video iframe {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 56.25vw;
-  min-width: 100vw;
-  min-height: 100vh;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: none;
 }
 
@@ -332,27 +342,23 @@ footer .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
-/* Narrower Blurred Box */
 .blur-box {
-  background: rgba(255, 255, 255, 0.10);   /* Very transparent as you wanted */
+  background: rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: 45px 60px;
+  padding: 50px 70px;
   border-radius: 28px;
   text-align: center;
   box-shadow: 0 15px 50px rgba(0,0,0,0.25);
-  max-width: 520px;           /* ← Narrower box */
-  width: 90%;
+  max-width: 480px;           /* Narrow blurred box */
 }
 
-/* Logo & Slogan */
 .hero-logo {
-  height: 400px;              /* Big but balanced */
+  height: 260px;
   width: auto;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .slogan {
@@ -360,18 +366,17 @@ footer .btn {
   color: #ffffff;
   margin: 0;
   font-weight: 500;
-  letter-spacing: 1px;
 }
 
 /* ==================== MOBILE ==================== */
 @media (max-width: 768px) {
-  .hero-video iframe {
-    height: 100vh;
-    width: 177.78vh;
+  .video-wrapper {
+    width: 92%;
+    max-width: 680px;
   }
   
   .hero-logo {
-    height: 190px;
+    height: 180px;
   }
   
   .slogan {
@@ -379,30 +384,22 @@ footer .btn {
   }
   
   .blur-box {
-    padding: 35px 40px;
-    max-width: 460px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-logo {
-    height: 300px;
-  }
-  .blur-box {
-    padding: 30px 30px;
+    padding: 40px 40px;
   }
 }
   </style>
 </head>
 <body>
-<!-- HERO VIDEO -->
+<!-- HERO VIDEO - Narrow Version -->
 <section class="hero-video">
-  <iframe 
-    src="https://www.youtube-nocookie.com/embed/cWugloHabcg?autoplay=1&mute=1&loop=1&playlist=cWugloHabcg&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
-    frameborder="0" 
-    allow="autoplay; encrypted-media" 
-    allowfullscreen>
-  </iframe>
+  <div class="video-wrapper">
+    <iframe 
+      src="https://www.youtube-nocookie.com/embed/437o-XdSAZw?autoplay=1&mute=1&loop=1&playlist=437o-XdSAZw&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
+      frameborder="0" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <div class="video-overlay">
     <div class="blur-box">
