@@ -135,6 +135,49 @@
             }
             h1 { font-size: 2rem; }
         }
+        
+         .btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 16px 32px;           /* slightly reduced */
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;          /* prevents text wrapping */
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+button[type="submit"] {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 50px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover { background: var(--accent-hover); }
+    
+    .product-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card-link:hover .product-card {
+  transform: translateY(-12px);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.08);
+  border-color: #ccc;
+}
+
     </style>
 </head>
 <body>
@@ -157,6 +200,7 @@
 
             <!-- Example Blog Post 1 -->
             <article class="blog-card">
+                 <a href="blogs/ilgtspejiga-sunu-maja.html" class="product-card-link">
                 <img src="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/Ekologiska_Krasa_Paint_Eco.jpg?raw=true" 
                      alt="Kā izvēlēties suņu māju ziemai" class="blog-image">
                 <div class="blog-content">
@@ -164,8 +208,10 @@
                     <h2 class="blog-title">Ilgtspējīga suņu māja – kas slēpjas aiz vārda “ekoloģiska”?</h2>
                     <p class="blog-excerpt">Ilgtspējīga suņu māja nav tikai mājoklis tavam sunim.<br>
 Tā ir izvēle par to, kā mēs dzīvojam un ko atstājam aiz sevis.</p>
-                    <a href="blogs/ilgtspejiga-sunu-maja.html" class="read-more">Lasīt rakstu →</a>
+                   
+                    <div class="btn" style="pointer-events: none;">Apskatīt</div>
                 </div>
+                </a>
             </article>
 
             <!-- Example Blog Post 2 -->
