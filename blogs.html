@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogi | Garāžas Studija</title>
+    <meta name="description" content="Noderīgi raksti par ekoloģiskām suņu mājām, materiāliem, kopšanu un ilgtspējīgu dzīvi ar mīluļiem.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #0f0f0f;
+            --text-light: #555;
+            --accent: #000000;
+            --accent-hover: #222;
+            --border: #e5e5e5;
+            --radius: 16px;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 40px 0 60px;
+            text-align: center;
+        }
+
+        .logo img {
+            height: 250px;
+            width: auto;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin: 30px 0 16px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px 32px;
+            padding: 20px 0 100px;
+        }
+
+        .blog-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 28px;
+        }
+
+        .blog-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .blog-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 0 60px;
+            color: #666;
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://raw.githubusercontent.com/WeirdAsHell/weirdashell.github.io/main/img/GS_Logo_Caurspi%CC%84di%CC%84gs_Fons.png" 
+                         alt="Garāžas Studija Logo">
+                </a>
+            </div>
+            <h1>Blogi</h1>
+            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                Noderīgi raksti par ekoloģiskām suņu mājām, materiāliem un ilgtspējīgu dzīvi ar mīluļiem
+            </p>
+        </header>
+
+        <div class="blog-grid">
+
+            <!-- Example Blog Post 1 -->
+            <article class="blog-card">
+                <img src="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/Ekologiska_Krasa_Paint_Eco.jpg?raw=true" 
+                     alt="Kā izvēlēties suņu māju ziemai" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">6. aprīlis 2026</div>
+                    <h2 class="blog-title">Ilgtspējīga suņu māja – kas slēpjas aiz vārda “ekoloģiska”?</h2>
+                    <p class="blog-excerpt">Ilgtspējīga suņu māja nav tikai mājoklis tavam sunim.<br>
+Tā ir izvēle par to, kā mēs dzīvojam un ko atstājam aiz sevis.</p>
+                    <a href="blog-kas-izveleties-sunu-maju-ziemai.html" class="read-more">Lasīt rakstu →</a>
+                </div>
+            </article>
+
+            <!-- Example Blog Post 2 -->
+            <article class="blog-card"> 
+                <img src="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/blog2.jpg?raw=true" 
+                     alt="Ekoloģiskas vs plastmasas suņu mājas" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">28. marts 2026</div>
+                    <h2 class="blog-title">Ekoloģiskas vai plastmasas suņu māja – ko izvēlēties?</h2>
+                    <p class="blog-excerpt">Salīdzinājums starp mūsu koka suņu mājām un lētām plastmasas būdām. Kāpēc kvalitāte atmaksājas ilgtermiņā.</p>
+                    <a href="blog-ekologiskas-vs-plastmasas.html" class="read-more">Lasīt rakstu →</a>
+                </div>
+            </article>
+
+            <!-- Add more blog cards here as you write new posts -->
+
+        </div>
+
+        <footer>
+            <p>© 2026 Garāžas Studija — Rūpīgi. Apzināti. Paliekoši.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
