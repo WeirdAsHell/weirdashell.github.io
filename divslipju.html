@@ -203,6 +203,39 @@
         margin-bottom: 5px;
         margin-top: 25px;
     }
+   
+    /* Back button at the bottom */
+.back-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+    transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 100px 0 80px;
+    color: #666;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--border);
+    margin-top: 80px;
+}
+
+footer p {
+    margin: 0;
+}
   </style>
 </head>
 <body>
@@ -283,7 +316,8 @@
         </p>
 
     <footer>
-      <p>© 2026 Garāžas Studija — Rūpīgi. Apzināti. Paliekoši.</p>
+        <a href="index.html" class="back-btn">Atpakaļ</a>
+        <p>© 2026 Garāžas Studija — Rūpīgi. Apzināti. Paliekoši.</p>
     </footer>
   </div>
 
