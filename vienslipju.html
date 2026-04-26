@@ -22,8 +22,8 @@
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
  
   
-  <title>Ekoloģiska un dabīga vienslīpju suņu māja | Garāžas Studija</title>
-<meta name="description" content="Vienslīpju suņu māja, kas veidota pēc skandināvu dizaina, iederēsies jeburā pagalmā. Suņu būdu cena sākot no 750 eiro, atkarībā no siltinājuma izvēles.">
+  <title>Suņu māja no ekoloģiskiem un dabīgiem materiāliem ar vienslīpju jumtu | Garāžas Studija</title>
+<meta name="description" content="Suņu būda ar vienslīpju jumtu, kas veidota pēc skandināvu dizaina, iederēsies jeburā pagalmā. Suņu būdas cena sākot no 750 eiro, atkarībā no siltinājuma izvēles.">
   
   <style>
     :root {
@@ -208,7 +208,7 @@
       <!-- GALLERY -->
       <div class="gallery">
         <img id="mainImage" src="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/Vienslipju_Sunu_Maja_Tapsanas_Procesa.jpg?raw=true" 
-             alt="No koka ražota vienslīpju suņu būda. Dizainiska suņu māja, kas iederās mājas pagalmā" class="main-image">
+             alt="Suņu būda no koka ar vienslīpju jumtu. Dizainiska suņu māja, kas iederās mājas pagalmā" class="main-image">
 
         <div class="thumbnails">
           <img src="https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/Vienslipju_Sunu_Maja_Tapsanas_Procesa.jpg?raw=true" class="thumbnail active" onclick="changeImage(this)">
@@ -219,7 +219,7 @@
 
       <!-- INFO -->
       <div class="info">
-        <h1>Vienslīpju Suņu Māja</h1>
+        <h1>Suņu māja ar vienslīpju jumtu</h1>
         <div id="price" class="price">750€</div>
 
         <div class="variant-group">
@@ -260,11 +260,11 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">×</span>
-      <h3 id="modalTitle">Pasūtīt vienslīpju suņu māju</h3>
+      <h3 id="modalTitle">Pasūtīt suņu māju ar vienslīpju jumtu</h3>
       <form action="https://formspree.io/f/xykbnakq" method="POST">
         <input type="text" name="name" placeholder="Vārds" required>
         <input type="email" name="email" placeholder="E-pasts" required>
-        <input type="hidden" name="product" id="hiddenProduct" value="Vienslīpju suņu māja">
+        <input type="hidden" name="product" id="hiddenProduct" value="Suņu māja ar vienslīpju jumtu">
         <input type="hidden" name="variant" id="hiddenVariant" value="">
         <textarea name="message" placeholder="Citi jautājumi vai piebildes" ></textarea>
         <button type="submit">Nosūtīt pieteikumu</button>
@@ -295,7 +295,7 @@
       const total = document.getElementById('price').textContent;
 
       document.getElementById('hiddenVariant').value = `${sizeText} • ${total}`;
-      document.getElementById('modalTitle').textContent = `Pasūtīt vienslīpju suņu māju — ${total}`;
+      document.getElementById('modalTitle').textContent = `Pasūtīt suņu māju ar vienslīpju jumtu — ${total}`;
 
       document.getElementById('modal').style.display = "flex";
     }
