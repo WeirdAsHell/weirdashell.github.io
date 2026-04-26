@@ -61,13 +61,13 @@
     <priority>1.0</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/garazas-studijas-stasts.html</loc>
+    <loc>https://garazasstudija.lv/blogs/garazas-studijas-stasts.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/izmers-un-siltinajums.html</loc>
+    <loc>https://garazasstudija.lv/blogs/izmers-un-siltinajums.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -79,7 +79,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://garazasstudija.lv/painteco-krasa.html</loc>
+    <loc>https://garazasstudija.lv/blogs/painteco-krasa.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
