@@ -5,30 +5,7 @@
 	<lastmod>2026-04-26</lastmod>
 	<changefreq>Weekly</changefreq>
 	<priority>1.0</priority>
-	<image:image>
-	<image:loc>https://garazasstudija.lv/img/max-larochelle-QzP1GcDOSC8-unsplash.jpg</image:loc>
-	<image:title>max larochelle-QzP1GcDOSC8-unsplash</image:title>
-	</image:image>
-	<image:image>
-	<image:loc>https://garazasstudija.lv/img/pickawood-rwa0Yh38FeA-unsplash.jpg</image:loc>
-	<image:title>slide 1</image:title>
-	</image:image>
-	<image:image>
-	<image:loc>https://garazasstudija.lv/img/aranprime-tRcXnmFJT-0-unsplash.jpg</image:loc>
-	<image:title>slide 2</image:title>
-	</image:image>
-	<image:image>
-	<image:loc>https://garazasstudija.lv/img/pickawood-rwa0Yh38FeA-unsplash.jpg</image:loc>
-	<image:title>slide 3</image:title>
-	</image:image>
-	<image:image>
-	<image:loc>https://garazasstudija.lv/img/</image:loc>
-	<image:title>Twitter Social Card Image</image:title>
-	</image:image>
-	<image:image>
-	<image:loc>https://garazasstudija.lv/img/</image:loc>
-	<image:title>Facebook Social Card Image</image:title>
-	</image:image>
+	
 </url>
 	<url>
     <loc>https://garazasstudija.lv/blogs/ilgtspejiga-sunu-maja</loc>
@@ -37,49 +14,49 @@
     <priority>0.8</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/procesa.html</loc>
+    <loc>https://garazasstudija.lv/procesa</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/divslipu.html</loc>
+    <loc>https://garazasstudija.lv/divslipu</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/vienslipu.html</loc>
+    <loc>https://garazasstudija.lv/vienslipu</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/blogs.html</loc>
+    <loc>https://garazasstudija.lv/blogs</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/blogs/garazas-studijas-stasts.html</loc>
+    <loc>https://garazasstudija.lv/blogs/garazas-studijas-stasts</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/blogs/izmers-un-siltinajums.html</loc>
+    <loc>https://garazasstudija.lv/blogs/izmers-un-siltinajums</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 	<url>
-    <loc>https://garazasstudija.lv/par-mums.html</loc>
+    <loc>https://garazasstudija.lv/par-mums</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://garazasstudija.lv/blogs/painteco-krasa.html</loc>
+    <loc>https://garazasstudija.lv/blogs/painteco-krasa</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
