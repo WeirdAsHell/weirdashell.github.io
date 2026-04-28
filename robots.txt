@@ -1,17 +1,12 @@
 # robots.txt for Garāžas Studija
-# https://garazasstudija.lv
-# Last updated: 2026-04-25
-
-# Allow all crawlers to access the site
 User-agent: *
 Allow: /
 
-# Disallow admin or private areas (if you add them later)
-Disallow: /admin/
-Disallow: /private/
-Disallow: /draft/
+# Explicitly allow AhrefsBot
+User-agent: AhrefsBot
+Allow: /
 
-# Optional: Block aggressive AI scrapers (recommended)
+# Block aggressive AI scrapers
 User-agent: GPTBot
 Disallow: /
 
@@ -21,11 +16,5 @@ Disallow: /
 User-agent: ChatGPT-User
 Disallow: /
 
-User-agent: ClaudeBot
-Disallow: /
-
-# Sitemap location - Very important for SEO
+# Sitemap
 Sitemap: https://garazasstudija.lv/sitemap.xml
-
-# Crawl delay (optional - helps prevent overloading small sites)
-Crawl-delay: 1
