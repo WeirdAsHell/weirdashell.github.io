@@ -5,6 +5,11 @@
 	<lastmod>2026-04-26</lastmod>
 	<changefreq>daily</changefreq>
 	<priority>1.0</priority>
+
+	<image:image>
+<image:loc>https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/Garazas_Studija_Logo.png?raw=true</image:loc>
+<image:title>Garāžas Studija Logo | Garage Studio</image:title>
+</image:image>
 	
 </url>
 	<url>
@@ -12,6 +17,12 @@
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+
+				<image:image>
+<image:loc>https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/blogi/Ekologiska_Krasa_Paint_Eco.jpg?raw=true</image:loc>
+<image:title>Dabīga lineļļas krāsa no PaintEco</image:title>
+</image:image>
+		
   </url>
 	<url>
     <loc>https://garazasstudija.lv/procesa</loc>
@@ -24,12 +35,24 @@
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+
+			<image:image>
+<image:loc>https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/Divslipu_Sunu_Budas_Rasejums.jpg?raw=true</image:loc>
+<image:title>Suņu būdas ar divslīpu jumtu rasējums</image:title>
+</image:image>
+		
   </url>
 	<url>
     <loc>https://garazasstudija.lv/vienslipu</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+
+				<image:image>
+<image:loc>https://github.com/WeirdAsHell/weirdashell.github.io/blob/main/img/vienslipu_sunu_maja_rasejums.jpg?raw=true</image:loc>
+<image:title>Suņu būdas ar vienslīpu jumtu rasējums</image:title>
+</image:image>
+		
   </url>
 	<url>
     <loc>https://garazasstudija.lv/blogs</loc>
