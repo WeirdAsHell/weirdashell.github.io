@@ -227,9 +227,13 @@
   }
 
   .main-image {
+    display: block;
     width: 100%;
     height: auto;
-}
+    max-width: 100%;
+    object-fit: unset;
+    aspect-ratio: auto;
+  }
 
   .info h1 {
     font-size: 1.8rem;
@@ -276,9 +280,7 @@ align-items:center;
     padding-bottom: 45px;
   }
 
-  .main-image {
-    aspect-ratio: 4 / 3;
-  }
+
 
   .thumbnail {
     flex-basis: 72px;
