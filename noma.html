@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dekorāciju noma | Garāžas Studija</title>
-  <meta name="description" content="Garāžas Studijas dekorāciju noma. Apskati nomas kategorijas, piedāvājumu un produktu pieejamību.">
+  <meta name="description" content="Garāžas Studijas dekorāciju noma. Apskati nomas kategorijas un izvēlies dekorācijas savam pasākumam.">
   <link rel="canonical" href="https://garazasstudija.lv/noma">
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-  <link rel="stylesheet" href="css/noma.css?v=20261116-1">
+  <link rel="stylesheet" href="css/noma.css?v=20261116-2">
 </head>
 <body>
   <a class="skip-link" href="#noma-content">Pāriet uz saturu</a>
@@ -18,7 +18,7 @@
       </a>
       <h1>Dekorāciju noma</h1>
       <p class="tagline">Rūpīgi. Apzināti. Paliekoši.</p>
-      <p class="intro">Apskati dekorācijas un to pieejamību. Rezervācijai sazinies ar mums.</p>
+      <p class="intro">Izvēlies dekorācijas savam pasākumam. Rezervācijai sazinies ar mums.</p>
       <nav class="site-navigation" aria-label="Galvenā navigācija">
         <a href="index.html">Sākumlapa</a>
         <a href="noma.html" aria-current="page">Noma</a>
@@ -58,13 +58,6 @@
   </div>
 </section>
 
-      <section class="rental-availability" aria-labelledby="availability-heading">
-        <div class="availability-heading">
-          <h2 id="availability-heading">Nomas piedāvājums un pieejamība</h2>
-          <label for="month">Kalendāra mēnesis <input id="month" type="month"></label>
-        </div>
-        <div id="items" aria-live="polite">Ielādē…</div>
-      </section>
     </main>
     <footer class="site-footer">
       <nav class="footer-links" aria-label="Kājenes navigācija">
@@ -100,6 +93,5 @@
       if (event.target === contactDialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) contactDialog.close();
     });
   </script>
-  <script>const month=document.querySelector('#month'),items=document.querySelector('#items');month.value=new Date().toISOString().slice(0,7);let data=[];fetch('data/noma.json').then(r=>r.json()).then(j=>{data=j;render()}).catch(()=>items.textContent='Nomas informācija pagaidām nav pieejama.');month.onchange=render;function render(){items.replaceChildren();if(!data.length){items.textContent='Nomas piedāvājums drīzumā.';return}for(const item of data){let wrap=document.createElement('article');wrap.className='rent';if(item.image&&/^img\/[a-zA-Z0-9_./-]+$/.test(item.image)){let img=document.createElement('img');img.src=item.image;img.alt=item.name;wrap.append(img)}let info=document.createElement('div');let h=document.createElement('h3');h.textContent=item.name;info.append(h);let p=document.createElement('p');p.textContent=item.description||'';info.append(p);if(item.price){let price=document.createElement('p');price.textContent='Cena: '+item.price+' € / dienā';info.append(price)}let cal=document.createElement('div');cal.className='calendar';let [y,m]=month.value.split('-').map(Number),count=new Date(y,m,0).getDate();for(let d=1;d<=count;d++){let date=month.value+'-'+String(d).padStart(2,'0'),busy=(item.busy||[]).includes(date),cell=document.createElement('span');cell.className='day '+(busy?'busy':'free');cell.title=busy?'Aizņemts':'Pieejams';cell.textContent=d;cal.append(cell)}info.append(cal);let legend=document.createElement('p');legend.textContent='Zaļš — pieejams · Sarkans — aizņemts';info.append(legend);wrap.append(info);items.append(wrap)}} </script>
 </body>
 </html>
