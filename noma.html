@@ -1,4 +1,32 @@
-<!doctype html><html lang="lv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dekorāciju noma | Garāžas Studija</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="style.css"><style>main{max-width:1100px;margin:45px auto;padding:20px}.rent{border:1px solid #ddd;border-radius:12px;padding:20px;margin:18px 0;display:grid;grid-template-columns:200px 1fr;gap:22px}.rent>div:only-child{grid-column:1/-1}.rent img{width:100%;height:190px;object-fit:cover}.calendar{display:flex;flex-wrap:wrap;gap:6px}.day{border:1px solid #ddd;border-radius:6px;padding:7px;min-width:44px;text-align:center}.busy{background:#ead7d3}.free{background:#d9e9dc}.rental-categories{margin:36px 0 48px}.rental-categories>h2{font-size:24px;margin-bottom:22px}.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.category-card{min-width:0;border:1px solid #e0e3dc;border-radius:12px;overflow:hidden;background:#fff}.category-photo{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#f1f0e9;border-bottom:1px solid #e0e3dc;color:#687067}.category-photo span{padding:14px 22px;border:1px dashed #a8afa2;border-radius:6px;font-size:14px}.category-card h3{font-size:20px;margin:0;padding:20px 22px;color:#293c30}.rental-availability>h2{font-size:24px;margin-bottom:22px}@media(max-width:850px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}@media(max-width:650px){.rent{grid-template-columns:1fr}}@media(max-width:480px){.category-grid{grid-template-columns:1fr}.rental-categories{margin:28px 0 36px}}</style></head><body><main><p><a href="index.html">← Garāžas Studija</a></p><h1>Dekorāciju noma</h1><p>Apskati dekorācijas un to pieejamību. Rezervācijai sazinies ar mums.</p>
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dekorāciju noma | Garāžas Studija</title>
+  <meta name="description" content="Garāžas Studijas dekorāciju noma. Apskati nomas kategorijas un izvēlies dekorācijas savam pasākumam.">
+  <link rel="canonical" href="https://garazasstudija.lv/noma">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/noma.css?v=20261116-2">
+</head>
+<body>
+  <a class="skip-link" href="#noma-content">Pāriet uz saturu</a>
+  <div class="container">
+    <header class="site-header">
+      <a class="logo" href="index.html" aria-label="Garāžas Studija — sākumlapa">
+        <img src="img/Garazas_Studija_Logo.png" alt="Garāžas Studija" width="250" height="250">
+      </a>
+      <h1>Dekorāciju noma</h1>
+      <p class="tagline">Rūpīgi. Apzināti. Paliekoši.</p>
+      <p class="intro">Izvēlies dekorācijas savam pasākumam. Rezervācijai sazinies ar mums.</p>
+      <nav class="site-navigation" aria-label="Galvenā navigācija">
+        <a href="index.html">Sākumlapa</a>
+        <a href="noma.html" aria-current="page">Noma</a>
+        <a href="par-mums.html">Par mums</a>
+        <a href="blogs.html">Blogs</a>
+      </nav>
+    </header>
+    <main id="noma-content">
 <section class="rental-categories" aria-labelledby="categories-heading">
   <h2 id="categories-heading">Nomas kategorijas</h2>
   <!-- Pagaidu kategorijas: aizstāj nosaukumus un attēlu vietas ar īsto saturu. -->
@@ -29,6 +57,41 @@
     </article>
   </div>
 </section>
-<section class="rental-availability" aria-labelledby="availability-heading">
-<h2 id="availability-heading">Nomas piedāvājums un pieejamība</h2>
-<label>Kalendāra mēnesis <input id="month" type="month"></label><div id="items">Ielādē…</div></section></main><script>const month=document.querySelector('#month'),items=document.querySelector('#items');month.value=new Date().toISOString().slice(0,7);let data=[];fetch('data/noma.json').then(r=>r.json()).then(j=>{data=j;render()}).catch(()=>items.textContent='Nomas informācija pagaidām nav pieejama.');month.onchange=render;function render(){items.replaceChildren();if(!data.length){items.textContent='Nomas piedāvājums drīzumā.';return}for(const item of data){let wrap=document.createElement('article');wrap.className='rent';if(item.image&&/^img\/[a-zA-Z0-9_./-]+$/.test(item.image)){let img=document.createElement('img');img.src=item.image;img.alt=item.name;wrap.append(img)}let info=document.createElement('div');let h=document.createElement('h2');h.textContent=item.name;info.append(h);let p=document.createElement('p');p.textContent=item.description||'';info.append(p);if(item.price){let price=document.createElement('p');price.textContent='Cena: '+item.price+' € / dienā';info.append(price)}let cal=document.createElement('div');cal.className='calendar';let [y,m]=month.value.split('-').map(Number),count=new Date(y,m,0).getDate();for(let d=1;d<=count;d++){let date=month.value+'-'+String(d).padStart(2,'0'),busy=(item.busy||[]).includes(date),cell=document.createElement('span');cell.className='day '+(busy?'busy':'free');cell.title=busy?'Aizņemts':'Pieejams';cell.textContent=d;cal.append(cell)}info.append(cal);let legend=document.createElement('p');legend.textContent='Zaļš — pieejams · Sarkans — aizņemts';info.append(legend);wrap.append(info);items.append(wrap)}} </script></body></html>
+
+    </main>
+    <footer class="site-footer">
+      <nav class="footer-links" aria-label="Kājenes navigācija">
+        <button class="btn" type="button" id="open-contact">Sazināties</button>
+        <a class="btn" href="par-mums.html">Par mums</a>
+        <a class="btn" href="blogs.html">Blogs</a>
+      </nav>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61576577755558" target="_blank" rel="noopener" aria-label="Garāžas Studija Facebook (jaunā cilnē)"><img src="img/facebook_logo.png" alt="Facebook" width="28" height="28" loading="lazy"></a>
+        <a href="https://www.instagram.com/garazasstudija/" target="_blank" rel="noopener" aria-label="Garāžas Studija Instagram (jaunā cilnē)"><img src="img/instagram_logo.png" alt="Instagram" width="28" height="28" loading="lazy"></a>
+      </div>
+      <p>© 2026 Garāžas Studija — Rūpīgi. Apzināti. Paliekoši.</p>
+    </footer>
+  </div>
+  <dialog id="contact-dialog" aria-labelledby="contact-title">
+    <button type="button" class="close-dialog" aria-label="Aizvērt saziņas logu">×</button>
+    <h2 id="contact-title">Sazināties ar Garāžas Studiju</h2>
+    <form action="https://formspree.io/f/xykbnakq" method="POST">
+      <label>Jūsu vārds <input type="text" name="name" autocomplete="name" required></label>
+      <label>E-pasts <input type="email" name="email" autocomplete="email" required></label>
+      <label>Ziņojums <textarea name="message" required></textarea></label>
+      <input type="hidden" name="_next" value="https://garazasstudija.lv/paldies.html">
+      <input type="hidden" name="_subject" value="Nomas jautājums — Garāžas Studija">
+      <button class="btn" type="submit">Nosūtīt</button>
+    </form>
+  </dialog>
+  <script>
+    const contactDialog = document.querySelector('#contact-dialog');
+    document.querySelector('#open-contact').addEventListener('click', () => contactDialog.showModal());
+    contactDialog.querySelector('.close-dialog').addEventListener('click', () => contactDialog.close());
+    contactDialog.addEventListener('click', event => {
+      const bounds = contactDialog.getBoundingClientRect();
+      if (event.target === contactDialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) contactDialog.close();
+    });
+  </script>
+</body>
+</html>
