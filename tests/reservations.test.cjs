@@ -17,7 +17,11 @@ test('overlap at either boundary is rejected, adjacent days and different produc
 test('legacy dates cannot be double booked, cancelled bookings release dates',()=>{
  assert.throws(()=>M.validate({...booking,start:'2026-11-16'},[],products,legacy));
  M.validate({...booking,id:'2'},[{...booking,status:'cancelled'}],products,legacy);
- M.validate({...booking,status:'cancelled',start:'2026-11-16'},[],products,legacy);
+ M.validate({...booking,status:'cancelled',start:'2026-11-16'},[],products,legacy,true);
+ assert.throws(()=>M.validate({...booking,status:'cancelled'},[],products,legacy));
+ assert.throws(()=>M.validate({...booking,status:'completed'},[],products,legacy));
+ M.validate({...booking,status:'completed'},[],products,legacy,true);
+ assert.deepEqual(M.statuses,{pending:'Rezervēts',confirmed:'Apstiprināts'});
 });
 test('code, status and product validation',()=>{
  for(const change of [{clientCode:'Anna'},{clientCode:'a@b.lv'},{status:'x'},{productId:'missing'}])assert.throws(()=>M.validate({...booking,...change},[],products,legacy));

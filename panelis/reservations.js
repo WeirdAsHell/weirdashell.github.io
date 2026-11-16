@@ -5,7 +5,7 @@
   else root.Reservations = model;
 })(typeof globalThis !== 'undefined' ? globalThis : this, () => {
   'use strict';
-  const statuses = {pending: 'Rezervēts', confirmed: 'Apstiprināts', completed: 'Pabeigta', cancelled: 'Atcelta'};
+  const statuses = {pending: 'Rezervēts', confirmed: 'Apstiprināts'};
   const date = d => /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d;
   function days(start, end) {
     if (!date(start) || !date(end) || start > end) throw Error('Norādi derīgu sākuma un beigu datumu.');
@@ -17,10 +17,10 @@
     }
     return result;
   }
-  function validate(booking, bookings, products, legacy) {
+  function validate(booking, bookings, products, legacy, allowLegacy = false) {
     if (!products.some(p => p.id === booking.productId)) throw Error('Izvēlies produktu.');
     if (!/^GS-\d{4,8}$/.test(booking.clientCode)) throw Error('Klienta kodam jābūt formātā GS-0001 (4–8 cipari).');
-    if (!Object.hasOwn(statuses, booking.status)) throw Error('Nederīgs rezervācijas statuss.');
+    if (!Object.hasOwn(statuses, booking.status) && !(allowLegacy && ['completed','cancelled'].includes(booking.status))) throw Error('Nederīgs rezervācijas statuss.');
     const dates = days(booking.start, booking.end);
     if (booking.status !== 'cancelled') {
       if (bookings.some(b => b.id !== booking.id && b.productId === booking.productId && b.status !== 'cancelled' && b.start <= booking.end && b.end >= booking.start)) throw Error('Šajos datumos produktam jau ir rezervācija.');
