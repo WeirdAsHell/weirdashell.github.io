@@ -11,5 +11,13 @@
       "2026-11-21",
       "2026-11-22"
     ]
+  },
+  {
+    "id": "51c6cb69-e3fc-42b8-89ff-9dcf7640845f",
+    "name": "Jauns nomas produkts",
+    "description": "",
+    "price": "",
+    "image": "",
+    "busy": []
   }
 ]
