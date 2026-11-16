@@ -2,7 +2,7 @@
 
 Kontrolpaneļa sadaļā **Nomas kalendārs** pieejams mēneša un nedēļas skats,
 produktu filtrs un rezervāciju izveide, labošana un dzēšana. Datumu intervāli
-ietver abas robeždienas. Statusi: gaida apstiprinājumu, apstiprināta, pabeigta,
+ietver abas robeždienas. Statusi: rezervēts, apstiprināts, pabeigta,
 atcelta. Tikai atcelta rezervācija atbrīvo datumus. Viena produkta pārklājošies
 intervāli un sākotnēji aizņemtie datumi tiek noraidīti.
 
@@ -55,8 +55,8 @@ salāgošana; panelis šādus datus nepārraksta. Nelieto veco paneli paralēli 
 Publiskā pieejamība atjaunojas pēc GitHub Pages publicēšanas aiztures.
 
 Nomas sadaļā ir divas atsevišķas izvēlnes: **Rezervāciju kalendārs** un
-**Produktu pārvaldība**. Kalendāra statusu leģendā gaidošās rezervācijas ir
-dzeltenas, apstiprinātās zilas, pabeigtās violetas un atceltās sarkanas.
+**Produktu pārvaldība**. Kalendāra statusu leģendā rezervētās rezervācijas ir
+pelēkas, apstiprinātās zaļas, pabeigtās violetas un atceltās sarkanas.
 Statusa teksts redzams arī rezervāciju sarakstā; atceltās rezervācijas
 kalendāra dienas neaizņem.
 

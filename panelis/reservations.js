@@ -5,7 +5,7 @@
   else root.Reservations = model;
 })(typeof globalThis !== 'undefined' ? globalThis : this, () => {
   'use strict';
-  const statuses = {pending: 'Gaida apstiprinājumu', confirmed: 'Apstiprināta', completed: 'Pabeigta', cancelled: 'Atcelta'};
+  const statuses = {pending: 'Rezervēts', confirmed: 'Apstiprināts', completed: 'Pabeigta', cancelled: 'Atcelta'};
   const date = d => /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d;
   function days(start, end) {
     if (!date(start) || !date(end) || start > end) throw Error('Norādi derīgu sākuma un beigu datumu.');
