@@ -27,7 +27,15 @@ window.RentalCalendar = async function ({container, token, owner, repo, branch})
   const setup=node('div',null,container,{class:'card'});
   node('h2','Rezervāciju privātā glabātuve',setup);
   node('p','Izvēlies šī paša GitHub īpašnieka privātu repozitoriju ar vismaz vienu commit. Atslēgai vajadzīgas Contents: Read and write tiesības abiem repozitorijiem. Klientu vārdi un kontaktinformācija netiek glabāti.',setup);
-  const storage=input('Privātā repozitorija nosaukums',setup);
+  // Remember only the non-secret repository name, scoped to this website.
+  const storageKey=`gs:rental-repository:${owner}/${repo}`;
+  let rememberedRepo='garazas-studija-reservations';
+  try {
+    const saved=localStorage.getItem(storageKey);
+    if(saved && /^[\w.-]+$/.test(saved))rememberedRepo=saved;
+  } catch (_) { /* Storage can be unavailable in private/restricted browsing. */ }
+  const storage=input('Privātā repozitorija nosaukums',setup,rememberedRepo);
+  node('p','Repozitorija nosaukumu atcerēsimies šajā pārlūkā. GitHub piekļuves atslēga netiek saglabāta.',setup,{class:'small'});
   const connect=button('Atvērt kalendāru',setup,async()=>{
     connect.disabled=true; error.textContent='';
     try {
@@ -57,6 +65,7 @@ window.RentalCalendar = async function ({container, token, owner, repo, branch})
         if(dirty && document.publicSha!==publicSha)throw Error('Publiskie dati mainīti pēc privātās saglabāšanas. Nepieciešama manuāla datu salāgošana; nekas nav pārrakstīts.');
         products=document.products;
       }
+      try { localStorage.setItem(storageKey,privateRepo); } catch (_) { /* Calendar works without storage. */ }
       render();
     } catch(e){error.textContent=e.message;}finally{connect.disabled=false;}
   });

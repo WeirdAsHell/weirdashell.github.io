@@ -18,7 +18,10 @@ e-pastiem un piezīmēm nav rezervācijas lauku. Kodu sasaisti ar cilvēku glab�
    **Contents: Read and write** tiesības gan mājaslapas, gan privātajam
    repozitorijam. Atslēgu neievieto kodā vai čatā.
 3. Autorizējies panelī un nomas sadaļā ievadi privātā repozitorija nosaukumu
-   bez īpašnieka. Panelis pārbauda GitHub `private: true`; publisks repozitorijs
+   bez īpašnieka. Sākotnēji jau piedāvāts `garazas-studija-reservations`; pēc
+   veiksmīgas atvēršanas nosaukumu atceras šajā pārlūkā arī pēc pārlādēšanas.
+   Piekļuves atslēga netiek saglabāta. Ja pārlūka glabātuve bloķēta, kalendārs
+   turpina darboties bez nosaukuma iegaumēšanas. Panelis pārbauda GitHub `private: true`; publisks repozitorijs
    tiek noraidīts pirms jebkādas rakstīšanas.
 4. Pirmajā saglabāšanā privātā repozitorija noklusējuma zarā izveidojas
    `reservations.json`. Atslēga un privātā faila saturs netiek glabāti
