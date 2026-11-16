@@ -30,13 +30,26 @@ const assert=require('node:assert/strict');
  await page.getByLabel('Klienta kods').fill('GS-0001');await page.getByLabel('Sākuma datums').fill('2026-11-18');await page.getByLabel('Beigu datums').fill('2026-11-20');await page.getByRole('button',{name:'Pievienot rezervāciju',exact:true}).click();
  await page.getByRole('button',{name:'Mainīt',exact:true}).waitFor();assert.equal(privateData.bookings.length,1);assert.deepEqual(publicData[0].busy,['2026-11-16','2026-11-18','2026-11-19','2026-11-20']);assert(!JSON.stringify(publicData).includes('GS-'));
  await page.getByLabel('Klienta kods').fill('GS-0002');await page.getByLabel('Sākuma datums').fill('2026-11-20');await page.getByLabel('Beigu datums').fill('2026-11-21');let count=puts.length;await page.getByRole('button',{name:'Pievienot rezervāciju',exact:true}).click();await page.getByRole('status').filter({hasText:'jau ir rezervācija'}).waitFor();assert.equal(puts.length,count);
+ assert.deepEqual(await page.getByLabel('Rezervācijas statuss').locator('option').allTextContents(),['Rezervēts','Apstiprināts']);
+ await page.getByLabel('Sākuma datums').fill('2026-11-21');await page.getByLabel('Beigu datums').fill('2026-11-21');await page.getByRole('button',{name:'Pievienot rezervāciju',exact:true}).click();
+ await page.waitForFunction(()=>document.querySelectorAll('select[aria-label="Klienta numurs"] option').length===3);
+ await page.getByLabel('Klienta numurs',{exact:true}).selectOption('GS-0002');
+ assert.equal(await page.locator('.booking-calendar .booking').count(),1);
+ assert.equal(await page.getByRole('button',{name:'Mainīt',exact:true}).count(),1);
+ assert(!(await page.locator('.booking-calendar').innerText()).includes('GS-0001'));
+ await page.getByLabel('Produkts',{exact:true}).selectOption('rental-1');
+ assert.equal(await page.locator('.booking-calendar .booking').count(),1);
+ await page.getByLabel('Skats',{exact:true}).selectOption('week');
+ assert.equal(await page.getByLabel('Klienta numurs',{exact:true}).inputValue(),'GS-0002');
+ await page.getByRole('button',{name:'Dzēst',exact:true}).click();
+ await page.waitForFunction(()=>document.querySelector('select[aria-label="Klienta numurs"]').value==='');
  await page.getByLabel('Skats',{exact:true}).selectOption('week');assert.equal(await page.locator('thead th').count(),8);
- await page.getByRole('button',{name:'Mainīt',exact:true}).click();await page.getByLabel('Rezervācijas statuss').selectOption('cancelled');failPublic=true;await page.getByRole('button',{name:'Saglabāt izmaiņas',exact:true}).click();await page.getByRole('button',{name:'Atkārtot pieejamības sinhronizāciju'}).waitFor();assert.equal(privateData.bookings[0].status,'cancelled');
+ await page.getByRole('button',{name:'Mainīt',exact:true}).click();await page.getByLabel('Rezervācijas statuss').selectOption('confirmed');await page.getByLabel('Beigu datums').fill('2026-11-19');failPublic=true;await page.getByRole('button',{name:'Saglabāt izmaiņas',exact:true}).click();await page.getByRole('button',{name:'Atkārtot pieejamības sinhronizāciju'}).waitFor();assert.equal(privateData.bookings[0].status,'confirmed');
  // Reload the section after a partial write: recover pending sync from private state.
- await page.getByRole('button',{name:'Nomas kalendārs',exact:true}).click();await page.getByLabel('Privātā repozitorija nosaukums').fill('private-bookings');await page.getByRole('button',{name:'Atvērt kalendāru'}).click();await page.getByRole('button',{name:'Atkārtot pieejamības sinhronizāciju'}).click();await page.getByLabel('Skats',{exact:true}).waitFor();await page.waitForFunction(()=>!document.querySelector('#content button')?.disabled);assert.deepEqual(publicData[0].busy,['2026-11-16']);
+ await page.getByRole('button',{name:'Nomas kalendārs',exact:true}).click();await page.getByLabel('Privātā repozitorija nosaukums').fill('private-bookings');await page.getByRole('button',{name:'Atvērt kalendāru'}).click();await page.getByRole('button',{name:'Atkārtot pieejamības sinhronizāciju'}).click();await page.getByLabel('Skats',{exact:true}).waitFor();await page.waitForFunction(()=>!document.querySelector('#content button')?.disabled);assert.deepEqual(publicData[0].busy,['2026-11-16','2026-11-18','2026-11-19']);
  await page.getByLabel('Datums',{exact:true}).fill('2026-11-18');await page.getByRole('button',{name:'Dzēst',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role="status"]')?.textContent==='');assert.equal(privateData.bookings.length,0);
  const colors=await page.locator('.status-legend .booking-status').evaluateAll(nodes=>nodes.map(n=>getComputedStyle(n).backgroundColor));
- assert.equal(new Set(colors).size,4);
+ assert.deepEqual(colors,['rgb(97, 97, 97)','rgb(35, 122, 59)']);
  await page.getByRole('button',{name:'Produktu pārvaldība',exact:true}).click();
  assert.equal(await page.locator('.calendar-scroll').count(),0);
  await page.getByRole('button',{name:'Dzēst produktu',exact:true}).click();
@@ -88,6 +101,21 @@ const assert=require('node:assert/strict');
  assert.equal(await page.getByLabel('Privātā repozitorija nosaukums').inputValue(),'garazas-studija-reservations');
  await page.getByLabel('Privātā repozitorija nosaukums').fill('private-bookings');await page.getByRole('button',{name:'Atvērt kalendāru'}).click();await page.getByLabel('Skats',{exact:true}).waitFor();
  assert.deepEqual(errors,[]);
+ // Historical statuses remain readable without becoming selectable or re-blocking cancelled dates.
+ privateData.bookings=[
+  {id:'legacy-done',productId:privateData.products[0].id,clientCode:'GS-0099',start:'2026-11-19',end:'2026-11-19',status:'completed'},
+  {id:'legacy-cancel',productId:privateData.products[0].id,clientCode:'GS-0098',start:'2026-11-18',end:'2026-11-18',status:'cancelled'}
+ ];
+ publicData=require('../panelis/reservations.js').publicProducts(privateData.products,privateData.bookings,privateData.legacyBusy);ps='legacy-public';privateData.publicSha=ps;
+ await page.getByRole('button',{name:'Nomas kalendārs',exact:true}).click();await page.getByLabel('Privātā repozitorija nosaukums').fill('private-bookings');await page.getByRole('button',{name:'Atvērt kalendāru'}).click();await page.getByLabel('Datums',{exact:true}).fill('2026-11-19');
+ await page.getByLabel('Klienta numurs',{exact:true}).selectOption('GS-0099');
+ assert.equal(await page.locator('.booking-calendar .booking.confirmed').count(),1);
+ await page.getByRole('button',{name:'Mainīt',exact:true}).click();assert.equal(await page.getByLabel('Rezervācijas statuss').inputValue(),'confirmed');
+ await page.getByLabel('Klienta numurs',{exact:true}).selectOption('GS-0098');assert.equal(await page.locator('.booking-calendar .booking').count(),0);
+ await page.getByText('Iepriekš atcelto rezervāciju vēsture (1)',{exact:true}).click();await page.getByRole('button',{name:'Dzēst vēstures ierakstu'}).waitFor();
+ assert.deepEqual(publicData[0].busy,['2026-11-16','2026-11-19']);
+ await page.getByRole('button',{name:'Notīrīt atlasi',exact:true}).click();
+ assert.deepEqual(errors,[]);
  if(process.env.SCREENSHOT_DIR){await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:process.env.SCREENSHOT_DIR+'/calendar-desktop.png',fullPage:true});}
- console.log('PASS: booking CRUD/conflicts/sync recovery; distinct status colors; product create/edit/cancel/delete and guarded deletion; saved repository dropdown/reload; no stored token or public code leak; mobile layout; no JS errors.');await browser.close();
+ console.log('PASS: booking CRUD/conflicts/sync recovery; two status labels and grey/green colors; combined client/product filtering; product create/edit/cancel/delete and guarded deletion; saved repository dropdown/reload; no stored token or public code leak; mobile layout; no JS errors.');await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

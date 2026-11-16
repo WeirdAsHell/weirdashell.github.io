@@ -2,7 +2,7 @@
 window.RentalCalendar = async function ({container, token, owner, repo, branch}) {
   const M = window.Reservations;
   let products, document, privateRepo, privateBranch, privateSha, publicSha;
-  let selected = new Date().toLocaleDateString('en-CA'), view = 'month', filter = '', editing = null, working = false, dirty = false, section = 'calendar', productEditing = null;
+  let selected = new Date().toLocaleDateString('en-CA'), view = 'month', filter = '', clientFilter = '', editing = null, working = false, dirty = false, section = 'calendar', productEditing = null;
   // Build dates without locale-dependent serialization.
   const now = new Date(); selected = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   const node = (tag, text, parent, attrs = {}) => {
@@ -67,7 +67,7 @@ window.RentalCalendar = async function ({container, token, owner, repo, branch})
       }
       if(document.version!==1 || !Array.isArray(document.bookings) || !document.legacyBusy || typeof document.legacyBusy!=='object')throw Error('Neatbalstīts rezervāciju faila formāts.');
       for(const p of products) if(!Object.hasOwn(document.legacyBusy,p.id))document.legacyBusy[p.id]=p.busy || [];
-      for(const b of document.bookings) M.validate(b,document.bookings,document.products || products,document.legacyBusy);
+      for(const b of document.bookings) M.validate(b,document.bookings,document.products || products,document.legacyBusy,true);
       if (Array.isArray(document.products)) {
         const projection=M.publicProducts(document.products,document.bookings,document.legacyBusy);
         dirty=JSON.stringify(projection)!==JSON.stringify(decode(pub.content));
@@ -86,7 +86,7 @@ window.RentalCalendar = async function ({container, token, owner, repo, branch})
     container.replaceChildren();
     const card=node('div',null,container,{class:'card'});
     node('h2','Nomas rezervāciju kalendārs',card);
-    node('p',`Privāti: ${owner}/${privateRepo}. Datumi ietver sākuma un beigu dienu. Atcelta rezervācija neaizņem produktu.`,card,{class:'small'});
+    node('p',`Privāti: ${owner}/${privateRepo}. Datumi ietver sākuma un beigu dienu. Lai atbrīvotu datumus, dzēs rezervāciju.`,card,{class:'small'});
     const notice=node('p',dirty?'Rezervācijas saglabātas privāti, bet pieejamība vēl nav publicēta. Atkārto sinhronizāciju.':'',card,{role:'status','aria-live':'polite'});
     if(dirty)button('Atkārtot pieejamības sinhronizāciju',card,()=>persist(document.bookings,notice,true));
     const tabs=node('div',null,card,{class:'rental-sections','aria-label':'Nomas pārvaldības sadaļas'});
@@ -102,27 +102,37 @@ window.RentalCalendar = async function ({container, token, owner, repo, branch})
     const date=input('Datums',bar,selected,'date');date.onchange=()=>{if(M.date(date.value)){selected=date.value;render();}};
     button('← Iepriekšējais',bar,()=>move(-1));button('Šodien',bar,()=>{selected=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;render();});button('Nākamais →',bar,()=>move(1));
     const pf=select('Produkts',bar,[['','Visi produkti'],...products.map(p=>[p.id,p.name])],filter);pf.onchange=()=>{filter=pf.value;render();};
+    const clients=[...new Set(document.bookings.map(b=>b.clientCode))].sort();
+    const cf=select('Klienta numurs',bar,[['','Visi klienti'],...clients.map(code=>[code,code])],clientFilter);
+    cf.onchange=()=>{clientFilter=cf.value;render();};
+    if(filter||clientFilter)button('Notīrīt atlasi',bar,()=>{filter='';clientFilter='';render();},'secondary');
     const dates=M.range(selected,view);
     node('p',`${dates[0]} — ${dates.at(-1)}`,card);
     const scroll=node('div',null,card,{class:'calendar-scroll',tabindex:'0','aria-label':'Rezervāciju kalendārs'});
     const table=node('table',null,scroll,{class:'booking-calendar'}), head=node('tr',null,node('thead',null,table));node('th','Produkts',head,{scope:'col'});
     for(const d of dates)node('th',new Intl.DateTimeFormat('lv-LV',{weekday:'short',day:'numeric',month:'numeric',timeZone:'UTC'}).format(new Date(d)),head,{scope:'col'});
     const body=node('tbody',null,table);
-    for(const p of products.filter(p=>!filter||p.id===filter)){
+    for(const p of products.filter(p=>(!filter||p.id===filter)&&(!clientFilter||document.bookings.some(b=>b.productId===p.id&&b.clientCode===clientFilter&&b.status!=='cancelled'&&b.start<=dates.at(-1)&&b.end>=dates[0])))){
       const row=node('tr',null,body);node('th',p.name,row,{scope:'row'});
       for(const d of dates){
         const cell=node('td',null,row);
-        const matches=document.bookings.filter(b=>b.productId===p.id && b.start<=d && b.end>=d && b.status!=='cancelled');
-        if((document.legacyBusy[p.id]||[]).includes(d))node('span','Iepriekš aizņemts',cell,{class:'legacy-busy'});
-        for(const b of matches)button(`${b.clientCode} · ${M.statuses[b.status]}`,cell,()=>{editing=b.id;render();},`booking booking-status ${b.status}`);
+        const matches=document.bookings.filter(b=>b.productId===p.id && b.start<=d && b.end>=d && b.status!=='cancelled'&&(!clientFilter||b.clientCode===clientFilter));
+        if(!clientFilter&&(document.legacyBusy[p.id]||[]).includes(d))node('span','Iepriekš aizņemts',cell,{class:'legacy-busy'});
+        for(const b of matches)button(`${b.clientCode} · ${M.statuses[b.status==='completed'?'confirmed':b.status]}`,cell,()=>{editing=b.id;render();},`booking booking-status ${b.status==='completed'?'confirmed':b.status}`);
         const add=button('+',cell,()=>{editing={productId:p.id,start:d,end:d};render();},'secondary');add.setAttribute('aria-label',`Jauna rezervācija: ${p.name}, ${d}`);
       }
     }
     editor(card,notice);
     const list=node('div',null,card);node('h3','Rezervācijas izvēlētajā periodā',list);
-    const visible=document.bookings.filter(b=>(!filter||b.productId===filter)&&b.start<=dates.at(-1)&&b.end>=dates[0]);
+    const visible=document.bookings.filter(b=>b.status!=='cancelled'&&(!clientFilter||b.clientCode===clientFilter)&&(!filter||b.productId===filter)&&b.start<=dates.at(-1)&&b.end>=dates[0]);
     if(!visible.length)node('p','Šajā periodā rezervāciju nav.',list);
-    for(const b of visible){const row=node('div',null,list,{class:'row'});node('p',`${products.find(p=>p.id===b.productId)?.name || b.productId} · ${b.clientCode} · ${b.start} — ${b.end}`,row);node('span',M.statuses[b.status],row,{class:`booking-status ${b.status}`});button('Mainīt',row,()=>{editing=b.id;render();});button('Dzēst',row,async()=>{if(confirm('Dzēst šo rezervāciju?'))await persist(document.bookings.filter(x=>x.id!==b.id),notice);},'danger');}
+    for(const b of visible){const row=node('div',null,list,{class:'row'});node('p',`${products.find(p=>p.id===b.productId)?.name || b.productId} · ${b.clientCode} · ${b.start} — ${b.end}`,row);node('span',M.statuses[b.status==='completed'?'confirmed':b.status],row,{class:`booking-status ${b.status==='completed'?'confirmed':b.status}`});button('Mainīt',row,()=>{editing=b.id;render();});button('Dzēst',row,async()=>{if(confirm('Dzēst šo rezervāciju?'))await persist(document.bookings.filter(x=>x.id!==b.id),notice);},'danger');}
+    const archived=document.bookings.filter(b=>b.status==='cancelled'&&(!clientFilter||b.clientCode===clientFilter)&&(!filter||b.productId===filter)&&b.start<=dates.at(-1)&&b.end>=dates[0]);
+    if(archived.length){
+      const history=node('details',null,card);node('summary',`Iepriekš atcelto rezervāciju vēsture (${archived.length})`,history);
+      node('p','Šie vēsturiskie ieraksti neaizņem datumus un nav aktīvas rezervācijas.',history,{class:'small'});
+      for(const b of archived){const row=node('div',null,history,{class:'row'});node('p',`${b.clientCode} · ${products.find(p=>p.id===b.productId)?.name||b.productId} · ${b.start} — ${b.end}`,row);button('Dzēst vēstures ierakstu',row,async()=>{if(confirm('Neatgriezeniski dzēst šo vēstures ierakstu?'))await persist(document.bookings.filter(x=>x.id!==b.id),notice);},'danger');}
+    }
     lockControls();
   }
   function lockControls(){
@@ -134,9 +144,9 @@ window.RentalCalendar = async function ({container, token, owner, repo, branch})
     const b=typeof editing==='string'?document.bookings.find(b=>b.id===editing):editing;
     const form=node('form',null,parent,{class:'row'});node('h3',b?.id?'Mainīt rezervāciju':'Jauna rezervācija',form);
     const product=select('Nomas produkts',form,products.map(p=>[p.id,p.name]),b?.productId||filter||products[0]?.id);
-    const code=input('Klienta kods (piemēram, GS-0001)',form,b?.clientCode||'');code.required=true;code.pattern='GS-[0-9]{4,8}';code.maxLength=11;
+    const code=input('Klienta kods (piemēram, GS-0001)',form,b?.clientCode||clientFilter);code.required=true;code.pattern='GS-[0-9]{4,8}';code.maxLength=11;
     const start=input('Sākuma datums',form,b?.start||selected,'date'),end=input('Beigu datums',form,b?.end||selected,'date');start.required=end.required=true;
-    const status=select('Rezervācijas statuss',form,Object.entries(M.statuses),b?.status||'pending');
+    const status=select('Rezervācijas statuss',form,Object.entries(M.statuses),b?.status==='completed'?'confirmed':b?.status||'pending');
     const submit=node('button',b?.id?'Saglabāt izmaiņas':'Pievienot rezervāciju',form,{type:'submit'});submit.disabled=!products.length;
     button('Notīrīt formu',form,()=>{editing=null;render();},'secondary');
     form.onsubmit=async e=>{e.preventDefault();const booking={id:b?.id||crypto.randomUUID(),productId:product.value,clientCode:code.value.trim(),start:start.value,end:end.value,status:status.value};try{M.validate(booking,document.bookings,products,document.legacyBusy);await persist([...document.bookings.filter(x=>x.id!==booking.id),booking],notice);}catch(err){notice.textContent=err.message;}};
@@ -207,7 +217,7 @@ window.RentalCalendar = async function ({container, token, owner, repo, branch})
       }
       const privateLatest=await read(privateRepo,'reservations.json',privateBranch);
       if(privateLatest.sha!==privateSha)throw Error('Privātās rezervācijas mainītas citā sesijā. Pārlādē nomas sadaļu.');
-      const saved=await write(repo,'data/noma.json',branch,M.publicProducts(products,document.bookings,document.legacyBusy),publicSha,'Panelis: produktu pieejamība');publicSha=saved.content.sha;dirty=false;editing=null;working=false;render();return true;
+      const saved=await write(repo,'data/noma.json',branch,M.publicProducts(products,document.bookings,document.legacyBusy),publicSha,'Panelis: produktu pieejamība');publicSha=saved.content.sha;dirty=false;editing=null;if(clientFilter&&!document.bookings.some(b=>b.clientCode===clientFilter))clientFilter='';working=false;render();return true;
     }catch(e){working=false;if(dirty){render();container.querySelector('[role="status"]').textContent=`${e.message} Rezervācijas saglabātas privāti; publiskā pieejamība nav atjaunota. Atkārto sinhronizāciju pirms sadaļas aizvēršanas.`;}else{container.querySelectorAll('button,input,textarea,select').forEach(n=>{n.disabled=false;});notice.textContent=e.message;}return false;
     }finally{working=false;}
   }

@@ -1,9 +1,9 @@
 # Nomas rezervāciju kalendārs
 
 Kontrolpaneļa sadaļā **Nomas kalendārs** pieejams mēneša un nedēļas skats,
-produktu filtrs un rezervāciju izveide, labošana un dzēšana. Datumu intervāli
-ietver abas robeždienas. Statusi: rezervēts, apstiprināts, pabeigta,
-atcelta. Tikai atcelta rezervācija atbrīvo datumus. Viena produkta pārklājošies
+produktu un klientu numuru filtri un rezervāciju izveide, labošana un dzēšana. Datumu intervāli
+ietver abas robeždienas. Pieejami tikai divi statusi: **Rezervēts** (pelēks) un **Apstiprināts**
+(zaļš). Lai atbrīvotu datumus, rezervāciju dzēš ar apstiprinājumu. Viena produkta pārklājošies
 intervāli un sākotnēji aizņemtie datumi tiek noraidīti.
 
 Klientu identificē tikai ar kodu `GS-0001` (4–8 cipari). Vārdiem, telefoniem,
@@ -56,9 +56,22 @@ Publiskā pieejamība atjaunojas pēc GitHub Pages publicēšanas aiztures.
 
 Nomas sadaļā ir divas atsevišķas izvēlnes: **Rezervāciju kalendārs** un
 **Produktu pārvaldība**. Kalendāra statusu leģendā rezervētās rezervācijas ir
-pelēkas, apstiprinātās zaļas, pabeigtās violetas un atceltās sarkanas.
-Statusa teksts redzams arī rezervāciju sarakstā; atceltās rezervācijas
-kalendāra dienas neaizņem.
+pelēkas un apstiprinātās zaļas. Statusa teksts redzams arī rezervāciju sarakstā.
+Iepriekšējā versijā saglabātās pabeigtās rezervācijas tiek attēlotas kā
+apstiprinātas; to iekšējās atslēgas nav masveidā pārrakstītas. Rediģējot
+šādu rezervāciju, izvēlas vienu no abiem aktuālajiem statusiem. Iepriekš
+atceltās rezervācijas ir atsevišķā vēstures sadaļā, neaizņem datumus un
+netiek piedāvātas aktīvo statusu izvēlnē.
+
+**Klienta numurs** atlasa klienta kodu, piemēram, `GS-0001`. Tas darbojas
+kopā ar produkta filtru mēneša/nedēļas kalendārā, aktīvo rezervāciju sarakstā
+un vēstures sadaļā. **Notīrīt atlasi** atjauno visus produktus un klientus.
+Filtri nemaina rezervācijas vai to pieejamības aprēķinu.
+
+Panelim izmantoti versēti CSS un JavaScript URL, lai pēc atjauninājuma
+pārlūks neizmantotu iepriekšējo failu kešatmiņu. Pēc PR apvienošanas un
+Pages publicēšanas pārlādē pašu paneļa lapu; ja saglabājusies vecā HTML
+versija, veic pilnu pārlādi (Ctrl+Shift+R vai Cmd+Shift+R).
 
 **Produktu pārvaldība** rāda produktu sarakstu ar cenu, rezervāciju un
 iepriekšējo aizņemto dienu skaitu. Poga **Pievienot produktu** atver tukšu
